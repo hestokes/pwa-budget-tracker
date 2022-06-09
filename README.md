@@ -46,10 +46,10 @@ was created utilizing the following technologies:
 
 ## Credits
 
-- [Help]()
+- [Web app manfiest Help](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 - [Help]()
 - [README guide](https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
-- [Musical inspiration]()
+- [Musical inspiration](https://www.youtube.com/watch?v=wtg7AetxuWo)
 
 ## Contributing / Reporting issues
 
