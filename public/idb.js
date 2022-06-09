@@ -26,17 +26,17 @@ request.onsuccess = (event) => {
 };
 
 const saveRecord = (record) => {
-  console.log("Your Record was Saved offline");
+  console.log("Record Saved offline");
   // opens transaction to allow access to budget objectStore
   const transaction = db.transaction(["budgetStore"], "readwrite");
   // access buget object store
   const store = transaction.objectStore("budgetStore");
-  // adds input
+  // adds input (use spread, don't have to but we can)
   store.add(record);
 };
 
 function checkDB() {
-  console.log("Checking of db executed");
+  console.log("Checking if db executed");
   const transaction = db.transaction(["budgetStore"], "readwrite");
   const store = transaction.objectStore("budgetStore");
   const getAll = store.getAll();
