@@ -48,3 +48,36 @@ self.addEventListener("activate", function (event) {
   // will not call the server if file is in that cache
   self.clients.claim();
 });
+
+// handles requests
+self.addEventListener("fetch", function (event) {
+  // checks if api request, and if so will cache a successful request
+  if (event.request.url.includes("/api/")) {
+    event.respondWith(
+      caches
+        .open(DATA_CACHE_NAME)
+        .then((cache) => {
+          return fetch(event.request)
+            .then((response) => {
+              if (response.status === 200) {
+                cache.put(event.request.url, response.clone());
+              }
+              return response;
+            })
+            .catch((err) => {
+              return cache.match(event.request);
+            });
+        })
+        .catch((err) => console.log(err))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.match(event.request).then((response) => {
+        return response || fetch(event.request);
+      });
+    })
+  );
+});
