@@ -32,7 +32,7 @@ self.addEventListener("install", function (event) {
 // activate service worker/remove old data from the cache.
 // runs before the install, ensures all version numbers stay the same
 self.addEventListener("activate", function (event) {
-  event.waitUtil(
+  event.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(
         keyList.map((key) => {
